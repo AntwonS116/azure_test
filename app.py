@@ -15,14 +15,14 @@ def ValuePredictor(to_predict_list):
 def index():     
     return render_template('index.html')
  
-@app.route('/testingflaskazure.azurewebsites.net/result', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def result():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
         to_predict_list = list(to_predict_list.values())
         to_predict_list = list(map(int, to_predict_list))
         prediction = ValuePredictor(to_predict_list)                 
-        return render_template("prediction.html", prediction = prediction)
+        return render_template("index.html", prediction = prediction)
 
 if __name__ == "__main__":
     app.run(debug=True)
