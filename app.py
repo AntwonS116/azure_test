@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pickle
 import numpy as np
+from pip import main
 
 app = Flask(__name__)
 
@@ -26,4 +27,4 @@ def result():
         return render_template("index.html", prediction = prediction)
 
 if __name__ == "__main__":
-    app.run()
+    main()
