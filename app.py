@@ -1,7 +1,9 @@
+from distutils.log import error
 from flask import Flask, render_template, request, redirect, url_for
 import pickle
 import numpy as np
 from pip import main
+import logging
 
 app = Flask(__name__)
 
@@ -23,8 +25,11 @@ def result():
         to_predict_list = request.form.to_dict()
         to_predict_list = list(to_predict_list.values())
         to_predict_list = list(map(int, to_predict_list))
-        prediction = ValuePredictor(to_predict_list)                 
+        prediction = ValuePredictor(to_predict_list)    
         return render_template("prediction.html", prediction = prediction)
+    if error:
+        logging.basicConfig(filename='app.log')
+        logging.error(error)
 
 if __name__ == "__main__":
     app.run()
