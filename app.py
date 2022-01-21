@@ -17,7 +17,7 @@ def ValuePredictor(to_predict_list):
 def index():     
     return render_template('index.html')
  
-@app.route('/result', methods = ['GET','POST'])
+@app.route('/testingflaskazure.azurewebsites.net/result', methods = ['POST'])
 def result():
     if request.method == 'POST':
         to_predict_list = request.form.to_dict()
@@ -27,4 +27,4 @@ def result():
         return render_template("prediction.html", prediction = prediction)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
